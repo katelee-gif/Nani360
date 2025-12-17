@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生分析報表 - Nani學習360</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="student-report.css">
+</head>
+<body>
+    <!-- 背景裝飾 -->
+    <div class="bg-decoration"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="image/Logo.svg" alt="Nani學習360">
+            </div>
+            
+            <nav class="main-nav">
+                <div class="nav-item" onclick="window.location.href='knowledge-list.html'">
+                    <span>學習</span>
+                </div>
+                <div class="nav-item active">
+                    <span>分析</span>
+                    <div class="nav-indicator"></div>
+                </div>
+            </nav>
+            
+            <div class="account-button">
+                <img src="image/Icon_Account.svg" alt="帳號">
+                <span>王老師</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6L8 10L12 6" stroke="#212B36" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subheader -->
+    <div class="subheader">
+        <div class="subheader-content">
+            <div class="subject-tab active">
+                <div>
+                    <img src="image/icon/P/report_box_solid.svg" alt="學生分析報表">
+                    <span>學生分析報表</span>
+                </div>
+                <div class="subject-indicator"></div>
+            </div>
+            <div class="subject-tab">
+                <div>
+                    <img src="image/monitor.svg" alt="全班學習檔案">
+                    <span>全班學習檔案</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header-section">
+                <div class="page-title-wrapper">
+                    <div class="page-title-content">
+                        <img src="image/people_icon.svg" alt="學生">
+                        <h1>學生列表</h1>
+                    </div>
+                    <p class="page-description">快速查看班上每位學生的學習分析報表</p>
+                </div>
+
+                <!-- Grade Toggle -->
+                <div class="grade-toggle">
+                    <button class="grade-btn active">國小</button>
+                    <button class="grade-btn">國中</button>
+                    <button class="grade-btn">高中</button>
+                </div>
+            </div>
+
+            <!-- 學生列表外層容器 -->
+            <div class="list-outer-container">
+                <!-- 學生列表內層容器 -->
+                <div class="student-table-container">
+                    <table class="student-table">
+                        <thead>
+                            <tr>
+                                <th class="student-name-column">
+                                    <div class="table-header">
+                                        <span>學生</span>
+                                    </div>
+                                </th>
+                                <th class="report-column">
+                                    <div class="table-header">
+                                        <span>分析報表</span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <!-- 學生 1 -->
+                        <tr class="student-row">
+                            <td class="student-name">
+                                <span>鄧玉婷</span>
+                            </td>
+                            <td class="report-buttons-cell">
+                                <button class="report-btn btn-math">
+                                    <span>數學報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-chinese" disabled>
+                                    <span>國語報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-science" disabled>
+                                    <span>自然報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- 學生 2 -->
+                        <tr class="student-row">
+                            <td class="student-name">
+                                <span>姚卓言</span>
+                            </td>
+                            <td class="report-buttons-cell">
+                                <button class="report-btn btn-math">
+                                    <span>數學報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-chinese" disabled>
+                                    <span>國語報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-science" disabled>
+                                    <span>自然報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- 學生 3 -->
+                        <tr class="student-row">
+                            <td class="student-name">
+                                <span>李雪怡</span>
+                            </td>
+                            <td class="report-buttons-cell">
+                                <button class="report-btn btn-math">
+                                    <span>數學報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-chinese" disabled>
+                                    <span>國語報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-science" disabled>
+                                    <span>自然報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- 學生 4 -->
+                        <tr class="student-row">
+                            <td class="student-name">
+                                <span>葉穎彤</span>
+                            </td>
+                            <td class="report-buttons-cell">
+                                <button class="report-btn btn-math">
+                                    <span>數學報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-chinese" disabled>
+                                    <span>國語報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-science" disabled>
+                                    <span>自然報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- 學生 5 -->
+                        <tr class="student-row">
+                            <td class="student-name">
+                                <span>鍾文婧</span>
+                            </td>
+                            <td class="report-buttons-cell">
+                                <button class="report-btn btn-math">
+                                    <span>數學報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-chinese" disabled>
+                                    <span>國語報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-science" disabled>
+                                    <span>自然報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- 學生 6 -->
+                        <tr class="student-row">
+                            <td class="student-name">
+                                <span>陳小明</span>
+                            </td>
+                            <td class="report-buttons-cell">
+                                <button class="report-btn btn-math">
+                                    <span>數學報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-chinese" disabled>
+                                    <span>國語報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="report-btn btn-science" disabled>
+                                    <span>自然報表</span>
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M7 4L11 9L7 14" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+            <!-- 分頁 -->
+            <div class="pagination">
+                <span class="pagination-info">1-6 of 6</span>
+                <div class="pagination-buttons">
+                    <button class="pagination-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="pagination-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© NANI BOOK ENTERPRISE CO., LTD. All Rights Reserved.</p>
+            <p class="version">v1.0.0</p>
+        </div>
+    </footer>
+</body>
+</html>
+

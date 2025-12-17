@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>派發成功 - Nani學習360</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="success.css">
+</head>
+<body>
+    <!-- 背景裝飾 -->
+    <div class="bg-decoration"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="image/Logo.svg" alt="Nani學習360">
+            </div>
+            
+            <nav class="main-nav">
+                <div class="nav-item active">
+                    <span>學習</span>
+                    <div class="nav-indicator"></div>
+                </div>
+                <div class="nav-item" onclick="window.location.href='student-report.html'">
+                    <span>分析</span>
+                </div>
+            </nav>
+            
+            <div class="account-button">
+                <img src="image/Icon_Account.svg" alt="帳號">
+                <span>王老師</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6L8 10L12 6" stroke="#212B36" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subheader -->
+    <div class="subheader">
+        <div class="subheader-content">
+            <div class="subject-tab">
+                <div>
+                    <img src="image/menu_book.svg" alt="國語">
+                    <span>國語</span>
+                </div>
+            </div>
+            <div class="subject-tab active">
+                <div>
+                    <img src="image/pencil_ruler_solid.svg" alt="數學">
+                    <span>數學</span>
+                </div>
+                <div class="subject-indicator"></div>
+            </div>
+            <div class="subject-tab">
+                <div>
+                    <img src="image/seedling_solid.svg" alt="自然">
+                    <span>自然</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-wrapper">
+            <div class="success-container">
+                <div class="success-content">
+                    <!-- 圖示 -->
+                    <div class="success-icon">
+                        <img src="image/paperplane_check.svg" alt="派發成功">
+                    </div>
+                    
+                    <!-- 文字內容 -->
+                    <div class="success-text">
+                        <h1 class="success-title">派發成功</h1>
+                        <p class="success-description">可返回知識列表繼續派發測驗或查看學生分析報表</p>
+                    </div>
+                    
+                    <!-- 按鈕區域 -->
+                    <div class="success-actions">
+                        <button class="btn-back" onclick="window.location.href='knowledge-list.html'">
+                            <img src="image/icon/L/list_ul_solid.svg" alt="">
+                            <span>返回知識點列表</span>
+                        </button>
+                        <button class="btn-report" onclick="window.location.href='student-report.html'">
+                            <img src="image/icon/P/report_box_solid.svg" alt="">
+                            <span>學生分析報表</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© NANI BOOK ENTERPRISE CO., LTD. All Rights Reserved.</p>
+            <p class="version">v1.0.0</p>
+        </div>
+    </footer>
+</body>
+</html>
+
