@@ -7,7 +7,14 @@
 
 body {
     font-family: 'Noto Sans TC', sans-serif;
-    background: linear-gradient(to bottom, rgba(188, 237, 255, 0.35), rgba(188, 237, 255, 0.5)), #FFFFFF;
+    background: 
+        linear-gradient(to bottom, rgba(188, 237, 255, 0.35), rgba(188, 237, 255, 0.5)),
+        url('image/bg.png'),
+        #FFFFFF;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -210,10 +217,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 12px 40px 0;
+    padding: 4px 40px 0;
     cursor: pointer;
     position: relative;
-    gap: 10px;
+    gap: 4px;
     flex: 1;
     transition: background 0.3s;
 }
@@ -329,7 +336,7 @@ body {
     gap: 8px;
     padding: 4px 6px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
-    border: 1px solid rgba(145, 158, 171, 0.16);
+    border: 2px solid #FFFFFF;
     border-radius: 100px;
     width: fit-content;
 }
@@ -624,17 +631,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     text-align: center;
 }
 
 .empty-state-icon {
-    width: 64px;
-    height: 64px;
+    width: 160px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.empty-state-icon img {
+    width: 160px;
+    height: 160px;
+    display: block;
 }
 
 .empty-state-title {
@@ -742,7 +755,7 @@ body {
     }
     
     .subject-tab {
-        padding: 12px 20px 0;
+        padding: 4px 20px 0;
     }
     
     .main-container {
