@@ -76,9 +76,10 @@
 
             <!-- Grade Toggle -->
             <div class="grade-toggle">
-                <button class="grade-btn active">國小</button>
-                <button class="grade-btn">國中</button>
-                <button class="grade-btn">高中</button>
+                <div class="grade-toggle-slider"></div>
+                <button class="grade-btn active" data-grade="0">國小</button>
+                <button class="grade-btn" data-grade="1">國中</button>
+                <button class="grade-btn" data-grade="2">高中</button>
             </div>
 
             <!-- Content Area -->
@@ -87,24 +88,40 @@
                 <div class="main-content">
                     <!-- Filter Section -->
                     <div class="filter-section">
-                        <div class="select-wrapper">
+                        <div class="custom-select-wrapper active" data-select="version">
                             <label>版本</label>
-                            <select>
-                                <option>南一</option>
-                            </select>
+                            <div class="custom-select">
+                                <div class="custom-select-trigger">
+                                    <span class="custom-select-value">南一</span>
+                                    <svg class="custom-select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 10L12 15L17 10" stroke="#637381" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="custom-select-dropdown">
+                                    <div class="custom-select-option" data-value="南一">南一</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="select-wrapper">
+                        <div class="custom-select-wrapper active" data-select="grade">
                             <label>冊次</label>
-                            <select>
-                                <option>第十冊（五下）</option>
-                            </select>
+                            <div class="custom-select">
+                                <div class="custom-select-trigger">
+                                    <span class="custom-select-value">第十冊（五下）</span>
+                                    <svg class="custom-select-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 10L12 15L17 10" stroke="#637381" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="custom-select-dropdown">
+                                    <div class="custom-select-option" data-value="第十冊（五下）">第十冊（五下）</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Knowledge Point Sections -->
                     <div class="knowledge-sections">
                         <!-- Section 1 - 展開狀態 -->
-                        <div class="accordion-item expanded">
+                        <div class="accordion-item expanded" id="section-1">
                             <div class="accordion-header">
                                 <h2 class="section-title">第一章 分數的計算</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -255,40 +272,321 @@
                         </div>
 
                         <!-- Section 2 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-2">
                             <div class="accordion-header">
                                 <h2 class="section-title">第二章 小數的乘法</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M7 10L12 15L17 10" stroke="#00A15D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
+                            
+                            <!-- 展開的內容 -->
+                            <div class="accordion-content">
+                                <!-- 小章節 1 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[2-1] 多位小數乘以整數</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>三位小數乘以二位整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>二位小數乘以二位整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>小數乘以整數之小數點位置關係</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>一位小數乘以一位整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>三位小數乘以一位整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>四位以上小數乘以二位以上整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 2 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[2-2] 整數的小數倍</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>三位小數乘以二位整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>整數乘以一位小數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>整數乘以二位以上小數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>小數乘以整數之小數點位置關係</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>整數乘以小數之小數點位置關係</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 3 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[2-3] 小數的小數倍</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>小數乘以小數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>解決小數的兩步驟問題（不併式）</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>小數乘以整數之小數點位置關係</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 4 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[2-4] 被乘數、乘數和積的關係</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>小數乘以小數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>小數乘法中，被乘數、乘數和積的關係</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>二位小數乘以一位整數</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="divider"></div>
                         </div>
 
-                        <!-- Section 3 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <!-- Section 3 - 展開狀態 -->
+                        <div class="accordion-item" id="section-3">
                             <div class="accordion-header">
                                 <h2 class="section-title">第三章 扇形</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M7 10L12 15L17 10" stroke="#00A15D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
+                            
+                            <!-- 展開的內容 -->
+                            <div class="accordion-content">
+                                <!-- 小章節 1 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[3-1] 認識扇形</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>扇形的構成要素</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 2 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[3-2] 認識圓心角</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>認識圓心角</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 3 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[3-3] 認識1╱2圓、1╱3圓、1╱4圓、1╱6圓……的扇形</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>幾分之幾圓的扇形</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 4 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[3-4] 繪製扇形</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>繪製扇形</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>扇形的比較及應用</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="divider"></div>
                         </div>
 
-                        <!-- Section 4 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <!-- Section 4 - 展開狀態 -->
+                        <div class="accordion-item" id="section-4">
                             <div class="accordion-header">
                                 <h2 class="section-title">第四章 體積</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M7 10L12 15L17 10" stroke="#00A15D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
+                            
+                            <!-- 展開的內容 -->
+                            <div class="accordion-content">
+                                <!-- 小章節 1 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[4-1] 體積的公式</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>長方體和正方體的表面積</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>正方體的體積公式</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>長方體的體積公式</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>長方體或正方體構成的複合形體體積的計算</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 2 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[4-2] 認識立方公尺和換算</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>正方體的體積公式</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>立方公尺</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>長方體的體積公式</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>長方體或正方體構成的複合形體體積的計算</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 小章節 3 -->
+                                <div class="subsection">
+                                    <h3 class="subsection-title">[4-3] 複合形體的體積</h3>
+                                    <div class="knowledge-grid">
+                                        <div class="knowledge-card">
+                                            <span>長方體和正方體的表面積</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                        <div class="knowledge-card">
+                                            <span>長方體或正方體構成的複合形體體積的計算</span>
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M7 4L11 9L7 14" stroke="#212B36" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="divider"></div>
                         </div>
 
                         <!-- Section 5 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-5">
                             <div class="accordion-header">
                                 <h2 class="section-title">第五章 整數、小數除以整數</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -299,7 +597,7 @@
                         </div>
 
                         <!-- Section 6 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-6">
                             <div class="accordion-header">
                                 <h2 class="section-title">第六章 生活中的大單位</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -310,7 +608,7 @@
                         </div>
 
                         <!-- Section 7 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-7">
                             <div class="accordion-header">
                                 <h2 class="section-title">第七章 柱體、錐體和球體</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -321,7 +619,7 @@
                         </div>
 
                         <!-- Section 8 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-8">
                             <div class="accordion-header">
                                 <h2 class="section-title">第八章 比率和百分率</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -332,7 +630,7 @@
                         </div>
 
                         <!-- Section 9 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-9">
                             <div class="accordion-header">
                                 <h2 class="section-title">第九章 容積和容量</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -343,7 +641,7 @@
                         </div>
 
                         <!-- Section 10 - 收起狀態 -->
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="section-10">
                             <div class="accordion-header">
                                 <h2 class="section-title">第十章 長條圖和折線圖</h2>
                                 <svg class="accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -353,22 +651,36 @@
                             <div class="divider"></div>
                         </div>
                     </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <div class="empty-state-content">
+                            <div class="empty-state-icon">
+                                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                    <circle cx="32" cy="32" r="30" stroke="#919EAB" stroke-width="2" stroke-dasharray="4 4"/>
+                                    <path d="M32 20V32M32 44H32.01" stroke="#919EAB" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="empty-state-title">暫無資料</h3>
+                            <p class="empty-state-description">目前沒有可用的知識點資料</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Sidebar -->
                 <aside class="sidebar">
                     <h3>內容目錄</h3>
                     <nav class="sidebar-nav">
-                        <a href="#" class="sidebar-item active">第一章 分數的計算</a>
-                        <a href="#" class="sidebar-item">第二章 小數的乘法</a>
-                        <a href="#" class="sidebar-item">第三章 扇形</a>
-                        <a href="#" class="sidebar-item">第四章 體積</a>
-                        <a href="#" class="sidebar-item">第五章 整數、小數除以整數</a>
-                        <a href="#" class="sidebar-item">第六章 生活中的大單位</a>
-                        <a href="#" class="sidebar-item">第七章 柱體、錐體和球體</a>
-                        <a href="#" class="sidebar-item">第八章 比率和百分率</a>
-                        <a href="#" class="sidebar-item">第九章 容積和容量</a>
-                        <a href="#" class="sidebar-item">第十章 長條圖和折線圖</a>
+                        <a href="#section-1" class="sidebar-item active" data-section="1">第一章 分數的計算</a>
+                        <a href="#section-2" class="sidebar-item" data-section="2">第二章 小數的乘法</a>
+                        <a href="#section-3" class="sidebar-item" data-section="3">第三章 扇形</a>
+                        <a href="#section-4" class="sidebar-item" data-section="4">第四章 體積</a>
+                        <a href="#section-5" class="sidebar-item" data-section="5">第五章 整數、小數除以整數</a>
+                        <a href="#section-6" class="sidebar-item" data-section="6">第六章 生活中的大單位</a>
+                        <a href="#section-7" class="sidebar-item" data-section="7">第七章 柱體、錐體和球體</a>
+                        <a href="#section-8" class="sidebar-item" data-section="8">第八章 比率和百分率</a>
+                        <a href="#section-9" class="sidebar-item" data-section="9">第九章 容積和容量</a>
+                        <a href="#section-10" class="sidebar-item" data-section="10">第十章 長條圖和折線圖</a>
                     </nav>
                 </aside>
             </div>
@@ -514,20 +826,203 @@
     </footer>
 
     <script>
-        // 手風琴展開/收起功能
+        // 所有功能初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // Grade Toggle 切換功能（帶滑動動效）
+            const gradeToggle = document.querySelector('.grade-toggle');
+            const gradeToggleSlider = document.querySelector('.grade-toggle-slider');
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            const knowledgeSections = document.querySelector('.knowledge-sections');
+            const emptyState = document.getElementById('emptyState');
+            const filterSection = document.querySelector('.filter-section');
+            
+            // 更新滑動指示器的位置和寬度
+            function updateSliderPosition(activeButton) {
+                if (!gradeToggleSlider || !activeButton) return;
+                
+                const toggleRect = gradeToggle.getBoundingClientRect();
+                const buttonRect = activeButton.getBoundingClientRect();
+                
+                // 計算相對位置（考慮 toggle 的 padding）
+                const leftOffset = buttonRect.left - toggleRect.left - 6; // 6px 是 toggle 的 left padding
+                const width = buttonRect.width;
+                
+                // 設置滑動指示器的位置和寬度
+                gradeToggleSlider.style.transform = `translateX(${leftOffset}px)`;
+                gradeToggleSlider.style.width = `${width}px`;
+            }
+            
+            // 初始化滑動位置（設置到第一個按鈕）
+            // 使用 setTimeout 確保 DOM 完全渲染後再計算位置
+            setTimeout(function() {
+                const activeButton = document.querySelector('.grade-btn.active');
+                if (activeButton) {
+                    updateSliderPosition(activeButton);
+                }
+            }, 0);
+            
+            // 監聽窗口大小變化，重新計算位置
+            window.addEventListener('resize', function() {
+                const currentActive = document.querySelector('.grade-btn.active');
+                if (currentActive) {
+                    updateSliderPosition(currentActive);
+                }
+            });
+            
+            gradeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 更新按鈕 active 狀態
+                    gradeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新滑動指示器位置
+                    updateSliderPosition(this);
+                    
+                    const grade = this.textContent.trim();
+                    
+                    // 根據選擇的學制顯示/隱藏內容
+                    if (grade === '國小') {
+                        // 顯示知識點列表，隱藏空狀態
+                        if (knowledgeSections) knowledgeSections.style.display = 'block';
+                        if (emptyState) emptyState.style.display = 'none';
+                        if (filterSection) filterSection.style.display = 'flex';
+                    } else {
+                        // 顯示空狀態，隱藏知識點列表
+                        if (knowledgeSections) knowledgeSections.style.display = 'none';
+                        if (emptyState) emptyState.style.display = 'flex';
+                        if (filterSection) filterSection.style.display = 'none';
+                    }
+                });
+            });
+            
+            // 自定義下拉選單功能
+            const customSelects = document.querySelectorAll('.custom-select-wrapper');
+            
+            customSelects.forEach(wrapper => {
+                const trigger = wrapper.querySelector('.custom-select-trigger');
+                const dropdown = wrapper.querySelector('.custom-select-dropdown');
+                const options = wrapper.querySelectorAll('.custom-select-option');
+                const valueDisplay = wrapper.querySelector('.custom-select-value');
+                
+                // 點擊觸發器展開/收起下拉選單
+                trigger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // 關閉其他打開的下拉選單
+                    customSelects.forEach(otherWrapper => {
+                        if (otherWrapper !== wrapper) {
+                            otherWrapper.classList.remove('open');
+                        }
+                    });
+                    
+                    // 切換當前下拉選單
+                    wrapper.classList.toggle('open');
+                });
+                
+                // 點擊選項
+                options.forEach(option => {
+                    option.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        // 更新顯示的值
+                        const selectedValue = this.getAttribute('data-value');
+                        valueDisplay.textContent = selectedValue;
+                        
+                        // 更新選中狀態
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        this.classList.add('selected');
+                        
+                        // 關閉下拉選單
+                        wrapper.classList.remove('open');
+                    });
+                });
+                
+                // 設置初始選中狀態
+                if (options.length > 0) {
+                    options[0].classList.add('selected');
+                }
+            });
+            
+            // 點擊頁面其他地方時關閉下拉選單
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.custom-select-wrapper')) {
+                    customSelects.forEach(wrapper => {
+                        wrapper.classList.remove('open');
+                    });
+                }
+            });
+        });
+        
+        // 展開指定章節並滾動到該位置
+        function expandSectionAndScroll(sectionNumber) {
+            const sectionId = `section-${sectionNumber}`;
+            const accordionItem = document.getElementById(sectionId);
+            
+            if (!accordionItem) return;
+            
+            // 展開該章節（如果還沒展開）
+            if (!accordionItem.classList.contains('expanded')) {
+                accordionItem.classList.add('expanded');
+            }
+            
+            // 等待動畫完成後滾動到該位置
+            setTimeout(() => {
+                const headerHeight = 56; // header 高度
+                const subheaderHeight = 60; // subheader 高度（估算）
+                const offset = headerHeight + subheaderHeight + 20; // 額外 20px 間距
+                
+                const elementPosition = accordionItem.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+        
+        // Sidebar 點擊事件
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const sectionNumber = this.getAttribute('data-section');
+                if (sectionNumber) {
+                    // 更新 active 狀態
+                    document.querySelectorAll('.sidebar-item').forEach(sidebarItem => {
+                        sidebarItem.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // 展開並滾動到對應章節
+                    expandSectionAndScroll(sectionNumber);
+                }
+            });
+        });
+        
+        // 手風琴展開/收起功能（點擊標題時）
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', function() {
                 const accordionItem = this.parentElement;
                 const isExpanded = accordionItem.classList.contains('expanded');
                 
-                // 收起所有其他的 accordion
-                document.querySelectorAll('.accordion-item').forEach(item => {
-                    item.classList.remove('expanded');
-                });
-                
-                // 如果當前項目不是展開狀態，則展開它
-                if (!isExpanded) {
+                // 切換當前項目的展開/收起狀態（不再自動收起其他章節）
+                if (isExpanded) {
+                    accordionItem.classList.remove('expanded');
+                } else {
                     accordionItem.classList.add('expanded');
+                    
+                    // 更新 sidebar 的 active 狀態
+                    const sectionId = accordionItem.id;
+                    if (sectionId) {
+                        const sectionNumber = sectionId.replace('section-', '');
+                        document.querySelectorAll('.sidebar-item').forEach(sidebarItem => {
+                            sidebarItem.classList.remove('active');
+                            if (sidebarItem.getAttribute('data-section') === sectionNumber) {
+                                sidebarItem.classList.add('active');
+                            }
+                        });
+                    }
                 }
             });
         });

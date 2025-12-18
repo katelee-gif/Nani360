@@ -267,6 +267,7 @@ body {
 
 /* Grade Toggle */
 .grade-toggle {
+    position: relative;
     display: flex;
     gap: 8px;
     padding: 4px 6px;
@@ -276,7 +277,21 @@ body {
     width: fit-content;
 }
 
+/* 滑動背景指示器 */
+.grade-toggle-slider {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    height: calc(100% - 8px);
+    background: #00A15D;
+    border-radius: 100px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
 .grade-btn {
+    position: relative;
     padding: 8px 14px;
     border: none;
     background: transparent;
@@ -286,16 +301,17 @@ body {
     line-height: 24px;
     border-radius: 100px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: color 0.3s ease;
+    z-index: 1;
+    white-space: nowrap;
 }
 
 .grade-btn.active {
-    background: #00A15D;
     color: white;
 }
 
 .grade-btn:hover:not(.active) {
-    background: rgba(0, 161, 93, 0.08);
+    color: #00A15D;
 }
 
 /* Content Area */
@@ -326,25 +342,34 @@ body {
 .select-wrapper {
     position: relative;
     width: 200px;
+    z-index: 1;
 }
 
 .select-wrapper label {
     position: absolute;
-    top: -11px;
-    left: 13px;
+    top: -10px;
+    left: 14px;
     background: white;
-    padding: 0 3px 0 3px;
+    padding: 0 2px 0 3px;
     font-size: 14px;
     color: #919EAB;
     line-height: 18px;
+    transition: color 0.3s ease;
+}
+
+/* Active 狀態下，label 保持灰色 */
+.select-wrapper.active label {
+    color: #919EAB;
 }
 
 .select-wrapper select {
     width: 100%;
     height: 40px;
-    padding: 0 40px 0 13px;
+    padding: 9px 40px 9px 14px;
     background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.4) 100%);
-    border: 1px solid rgba(145, 158, 171, 0.24);
+    border: none;
+    outline: 1px solid rgba(145, 158, 171, 0.24);
+    outline-offset: -1px;
     border-radius: 6px;
     font-size: 18px;
     font-weight: 400;
@@ -353,10 +378,63 @@ body {
     cursor: pointer;
     appearance: none;
     font-family: 'Noto Sans TC', sans-serif;
+    transition: outline-color 0.3s ease, background 0.3s ease;
 }
 
 .select-wrapper select:first-of-type {
     color: #919EAB;
+}
+
+/* Active 狀態 - 根據設計稿，Activated 狀態使用較淺的灰色邊框 */
+.select-wrapper select.active {
+    outline: 1px solid rgba(145, 158, 171, 0.16);
+    outline-offset: -1px;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.4) 100%);
+    color: #212B36;
+}
+
+.select-wrapper select.active:focus {
+    outline: 1px solid rgba(145, 158, 171, 0.16);
+    outline-offset: -1px;
+    box-shadow: none;
+}
+
+/* Select 下拉選單樣式 */
+.select-wrapper select {
+    /* 下拉選單容器樣式 */
+    background-image: none;
+}
+
+/* Select 下拉選單選項樣式 */
+.select-wrapper select option {
+    padding: 12px 14px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #212B36;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #ffffff;
+    line-height: 24px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+/* 選項 hover 狀態 */
+.select-wrapper select option:hover {
+    background: rgba(0, 161, 93, 0.08);
+}
+
+/* 選項選中狀態 */
+.select-wrapper select option:checked {
+    background: rgba(0, 161, 93, 0.12);
+    color: #00A15D;
+    font-weight: 500;
+}
+
+/* 選項 focus 狀態 */
+.select-wrapper select option:focus {
+    background: rgba(0, 161, 93, 0.08);
+    outline: none;
 }
 
 .select-wrapper::after {
@@ -371,6 +449,162 @@ body {
     border-right: 5px solid transparent;
     border-top: 6px solid #637381;
     pointer-events: none;
+    transition: border-top-color 0.3s ease;
+}
+
+/* Active 狀態下，下拉箭頭保持灰色 */
+.select-wrapper.active::after {
+    border-top-color: #637381;
+}
+
+/* ===== 自定義下拉選單組件 ===== */
+.custom-select-wrapper {
+    position: relative;
+    width: 200px;
+    z-index: 1;
+}
+
+.custom-select-wrapper label {
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: white;
+    padding: 0 2px 0 3px;
+    font-size: 14px;
+    color: #919EAB;
+    line-height: 18px;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.custom-select-wrapper.active label {
+    color: #919EAB;
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select-trigger {
+    width: 100%;
+    height: 40px;
+    padding: 9px 14px 9px 14px;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.4) 100%);
+    border: none;
+    outline: 1px solid rgba(145, 158, 171, 0.16);
+    outline-offset: -1px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #212B36;
+    line-height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Noto Sans TC', sans-serif;
+    transition: outline-color 0.3s ease, background 0.3s ease;
+}
+
+.custom-select-wrapper.active .custom-select-trigger {
+    outline: 1px solid rgba(145, 158, 171, 0.16);
+}
+
+.custom-select-value {
+    flex: 1;
+    text-align: left;
+}
+
+.custom-select-arrow {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.custom-select-wrapper.open .custom-select-arrow {
+    transform: rotate(180deg);
+}
+
+/* 下拉選單容器 */
+.custom-select-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 1000;
+    max-height: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.custom-select-wrapper.open .custom-select-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 下拉選單選項 */
+.custom-select-option {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #212B36;
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 22px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.custom-select-option:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.custom-select-option:last-child {
+    border-radius: 0 0 6px 6px;
+}
+
+/* Hover 和選中狀態 - 根據設計稿 */
+.custom-select-option:hover,
+.custom-select-option.selected {
+    background: rgba(145, 158, 171, 0.08);
+    color: #212B36;
+    font-weight: 400;
+}
+
+.custom-select-option:active {
+    background: rgba(145, 158, 171, 0.12);
+}
+
+/* 下拉選單滾動條樣式 */
+.custom-select-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-select-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+}
+
+.custom-select-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(145, 158, 171, 0.3);
+    border-radius: 3px;
+}
+
+.custom-select-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(145, 158, 171, 0.5);
 }
 
 /* Knowledge Sections */
@@ -394,13 +628,19 @@ body {
     gap: 18px;
     padding: 16px 0;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease,
+                margin 0.3s ease,
+                padding 0.3s ease,
+                border-radius 0.3s ease;
+    margin: 0;
+    border-radius: 0;
 }
 
 .accordion-header:hover {
     background: rgba(0, 161, 93, 0.04);
     margin: 0 -16px;
     padding: 16px 16px;
+    border-radius: 8px;
 }
 
 .section-title {
@@ -427,14 +667,30 @@ body {
 
 /* 展開的內容 */
 .accordion-content {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 0 16px 16px 16px;
+    padding: 0 16px 0 16px; /* 左右 padding 保持不變，避免水平延展 */
+    padding-bottom: 0; /* 只動畫底部 padding */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease,
+                padding-bottom 0.3s ease,
+                visibility 0s linear 0.3s;
 }
 
 .accordion-item.expanded .accordion-content {
-    display: flex;
+    max-height: 5000px; /* 足夠大的值以容納所有內容 */
+    opacity: 1;
+    padding-bottom: 16px; /* 只動畫底部 padding */
+    visibility: visible;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease 0.1s,
+                padding-bottom 0.3s ease,
+                visibility 0s linear 0s;
 }
 
 /* 小章節 */
@@ -500,6 +756,49 @@ body {
     height: 1px;
     background: rgba(145, 158, 171, 0.24);
     width: 100%;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 32px;
+    min-height: 400px;
+}
+
+.empty-state-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.empty-state-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #212B36;
+    line-height: 28px;
+    margin: 0;
+}
+
+.empty-state-description {
+    font-size: 16px;
+    font-weight: 400;
+    color: #637381;
+    line-height: 24px;
+    margin: 0;
 }
 
 /* Sidebar */

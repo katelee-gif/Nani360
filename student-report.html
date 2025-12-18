@@ -74,9 +74,10 @@
 
                 <!-- Grade Toggle -->
                 <div class="grade-toggle">
-                    <button class="grade-btn active">國小</button>
-                    <button class="grade-btn">國中</button>
-                    <button class="grade-btn">高中</button>
+                    <div class="grade-toggle-slider"></div>
+                    <button class="grade-btn active" data-grade="0">國小</button>
+                    <button class="grade-btn" data-grade="1">國中</button>
+                    <button class="grade-btn" data-grade="2">高中</button>
                 </div>
             </div>
 
@@ -265,23 +266,6 @@
                 </table>
                 </div>
             </div>
-
-            <!-- 分頁 -->
-            <div class="pagination">
-                <span class="pagination-info">1-6 of 6</span>
-                <div class="pagination-buttons">
-                    <button class="pagination-btn" disabled>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <button class="pagination-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -292,6 +276,58 @@
             <p class="version">v1.0.0</p>
         </div>
     </footer>
+
+    <script>
+        // Grade Toggle 滑動動效
+        document.addEventListener('DOMContentLoaded', function() {
+            const gradeToggle = document.querySelector('.grade-toggle');
+            const gradeToggleSlider = document.querySelector('.grade-toggle-slider');
+            const gradeButtons = document.querySelectorAll('.grade-btn');
+            
+            // 更新滑動指示器的位置和寬度
+            function updateSliderPosition(activeButton) {
+                if (!gradeToggleSlider || !activeButton) return;
+                
+                const toggleRect = gradeToggle.getBoundingClientRect();
+                const buttonRect = activeButton.getBoundingClientRect();
+                
+                // 計算相對位置（考慮 toggle 的 padding）
+                const leftOffset = buttonRect.left - toggleRect.left - 6; // 6px 是 toggle 的 left padding
+                const width = buttonRect.width;
+                
+                // 設置滑動指示器的位置和寬度
+                gradeToggleSlider.style.transform = `translateX(${leftOffset}px)`;
+                gradeToggleSlider.style.width = `${width}px`;
+            }
+            
+            // 初始化滑動位置（設置到第一個按鈕）
+            setTimeout(function() {
+                const activeButton = document.querySelector('.grade-btn.active');
+                if (activeButton) {
+                    updateSliderPosition(activeButton);
+                }
+            }, 0);
+            
+            // 監聽窗口大小變化，重新計算位置
+            window.addEventListener('resize', function() {
+                const currentActive = document.querySelector('.grade-btn.active');
+                if (currentActive) {
+                    updateSliderPosition(currentActive);
+                }
+            });
+            
+            gradeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 更新按鈕 active 狀態
+                    gradeButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 更新滑動指示器位置
+                    updateSliderPosition(this);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 

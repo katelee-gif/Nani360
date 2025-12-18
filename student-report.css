@@ -58,6 +58,8 @@ body {
     background: #FDFACA;
     padding: 0 24px;
     height: 56px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
 .header-content {
@@ -316,6 +318,7 @@ body {
 
 /* Grade Toggle */
 .grade-toggle {
+    position: relative;
     display: flex;
     gap: 8px;
     padding: 4px 6px;
@@ -325,26 +328,40 @@ body {
     width: fit-content;
 }
 
+/* 滑動背景指示器 */
+.grade-toggle-slider {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    height: calc(100% - 8px);
+    background: #00A15D;
+    border-radius: 100px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
 .grade-btn {
+    position: relative;
     padding: 8px 14px;
     border: none;
     background: transparent;
     font-size: 18px;
     font-weight: 700;
-    color: #C4CDD5;
+    color: #212B36;
     line-height: 24px;
     border-radius: 100px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: color 0.3s ease;
+    z-index: 1;
+    white-space: nowrap;
 }
 
 .grade-btn.active {
-    background: #00A15D;
     color: white;
 }
 
 .grade-btn:hover:not(.active) {
-    background: rgba(0, 161, 93, 0.08);
     color: #212B36;
 }
 
@@ -358,10 +375,10 @@ body {
 
 /* 學生表格容器 */
 .student-table-container {
-    background: #FFFFFF;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
     border-radius: 8px;
-    border: 1px solid rgba(145, 158, 171, 0.16);
-    overflow: hidden;
+    border: 1px solid #FFFFFF;
+    padding: 16px;
 }
 
 .student-table {
@@ -370,17 +387,20 @@ body {
 }
 
 .student-table thead {
-    background: rgba(145, 158, 171, 0.12);
 }
 
 .student-table th {
     text-align: left;
     font-weight: 500;
+    background: transparent;
 }
 
 .student-table thead tr {
     display: flex;
     width: 100%;
+    background: rgba(145, 158, 171, 0.12);
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .student-table tbody tr {
@@ -389,7 +409,7 @@ body {
 }
 
 .table-header {
-    padding: 10px 8px;
+    padding: 12px 8px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -397,15 +417,15 @@ body {
 }
 
 .student-name-column .table-header {
-    padding: 10px 16px;
+    padding: 12px 16px;
     justify-content: flex-start;
 }
 
 .table-header span {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: #637381;
-    line-height: 22px;
+    line-height: 20px;
 }
 
 .student-name-column {
