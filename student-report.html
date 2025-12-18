@@ -16,7 +16,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">
+            <div class="logo" onclick="window.location.href='index.html'">
                 <img src="image/Logo.svg" alt="Nani學習360">
             </div>
             
@@ -265,6 +265,20 @@
                     </tbody>
                 </table>
                 </div>
+                
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-state-content">
+                        <div class="empty-state-icon">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <circle cx="32" cy="32" r="30" stroke="#919EAB" stroke-width="2" stroke-dasharray="4 4"/>
+                                <path d="M32 20V32M32 44H32.01" stroke="#919EAB" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="empty-state-title">暫無資料</h3>
+                        <p class="empty-state-description">目前沒有可用的學生資料</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -283,6 +297,8 @@
             const gradeToggle = document.querySelector('.grade-toggle');
             const gradeToggleSlider = document.querySelector('.grade-toggle-slider');
             const gradeButtons = document.querySelectorAll('.grade-btn');
+            const studentTableContainer = document.querySelector('.student-table-container');
+            const emptyState = document.getElementById('emptyState');
             
             // 更新滑動指示器的位置和寬度
             function updateSliderPosition(activeButton) {
@@ -324,6 +340,19 @@
                     
                     // 更新滑動指示器位置
                     updateSliderPosition(this);
+                    
+                    // 根據選擇的學制顯示/隱藏內容
+                    const grade = this.textContent.trim();
+                    
+                    if (grade === '國小') {
+                        // 顯示學生表格，隱藏空狀態
+                        if (studentTableContainer) studentTableContainer.style.display = 'block';
+                        if (emptyState) emptyState.style.display = 'none';
+                    } else {
+                        // 顯示空狀態，隱藏學生表格
+                        if (studentTableContainer) studentTableContainer.style.display = 'none';
+                        if (emptyState) emptyState.style.display = 'flex';
+                    }
                 });
             });
         });
