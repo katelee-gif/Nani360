@@ -746,6 +746,7 @@ body {
 }
 
 .knowledge-card:hover {
+    background: rgba(0, 161, 93, 0.08);
     border-color: #00A15D;
     box-shadow: 0 2px 8px rgba(0, 161, 93, 0.15);
     transform: translateY(-2px);
